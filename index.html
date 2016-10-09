@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Karen's Notes</title>
+        <link rel="stylesheet" type="text/css" href="index.css" />
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <h1>Note Takeing App.</h1>
+        <p>name:</p>
+        <input id="name" name="name" type="text"></input>
+        <p>description:</p>
+        <input id="description"  name="description" type="text"></input>
+        <p>and finally</p>
+        <input type=submit onclick="saveData(document.getElementById('name').value, document.getElementById('description').value, 'right')">
+        <input type=submit value="Clear" onclick="clearData()">
+        <input type=submit value="Export" onclick="exportData(document.getElementById('name').value, document.getElementById('description').value, 'right')">
+        <p id="status"> </p>
+
+        <div id="notes"> </div>
+        <script >
+startApp();
+console.log("started");
+        </script>
+    </body>
+
+</html>
+
+

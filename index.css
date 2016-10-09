@@ -1,0 +1,21 @@
+body {
+    
+}
+
+h1{
+    color:green
+}
+input#name {
+    width: 500;
+}
+
+input#description{
+    
+    width:  500px;
+    height: 250px;
+}
+div#notes p{
+    background-color: #ff00ff;
+    width:  100px;
+    height: 100px;
+}
