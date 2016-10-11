@@ -1,25 +1,65 @@
 <html>
     <head>
         <title>Karen's Notes</title>
+        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="index.css" />
         <script src="index.js"></script>
+        <script src="controller.js"></script>
+        <script src="model.js"></script>
     </head>
     <body>
         <h1>Note Takeing App.</h1>
-        <p>name:</p>
-        <input id="name" name="name" type="text"></input>
-        <p>description:</p>
-        <input id="description"  name="description" type="text"></input>
-        <p>and finally</p>
-        <input type=submit onclick="saveData(document.getElementById('name').value, document.getElementById('description').value, 'right')">
-        <input type=submit value="Clear" onclick="clearData()">
-        <input type=submit value="Export" onclick="exportData(document.getElementById('name').value, document.getElementById('description').value, 'right')">
-        <p id="status"> </p>
 
-        <div id="notes"> </div>
+        <div id="insertData">
+            <p>Name:</p>
+            <input id="name" name="name" type="text"></input>
+            <p>Description:</p>
+            <textarea cols=60 rows=20 id="description"  name="description" type="text"></textarea>
+            <p>and finally</p>
+
+            <input type=submit value="Save" id="save" />
+            <input type=submit value="Clear" id="clear" />
+            <input type=submit value="Export" id="export"/>       
+            <input type=submit value="Like, Save!" id="store"/>       
+        </div>
+
+        <div id="DisplayData">
+
+            <b>Status:</b> <p id="status"> </p>
+            <input type=date name="date" id="date" value="2016-10-11" ></input>
+            <input type=text name="keyword"></input>
+            <input type=submit name="query" id="query"></input>
+            <div id="notes"> 
+            </div>
+
+        </div>
         <script >
+
 startApp();
 console.log("started");
+
+window.onbeforeunload = function(e) {
+    note.saveDataToLocalStorage();
+}
+        </script>
+
+        <script>
+document.getElementById("save").onclick = function() {
+    saveData(document.getElementById('name'), document.getElementById('description'))
+}
+document.getElementById("store").onclick = function() {
+    note.saveDataToLocalStorage();
+}
+document.getElementById("clear").onclick =  function() {
+    clearData();
+}
+document.getElementById("export").onclick = function() {
+    exportData();
+}
+document.getElementById("query").onclick = function() {
+    queryData(document.getElementById('date'), document.getElementById('keyword'))
+
+}
         </script>
     </body>
 

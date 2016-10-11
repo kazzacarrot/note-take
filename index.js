@@ -1,10 +1,5 @@
 console.log("hollo");
 
-function retrieveData(){
-
-    var s = sessionStorage.getItem('note');
-    return s;
-}
 
 function checkCompatibility(){
     if (typeof(Storage) !== "undefined") {
@@ -27,48 +22,39 @@ function clearNotesElement(){
     }
 }
 
+
 function display(){
+    console.log("clearing");
     clearNotesElement();
-    var o, para, t;
-    for (n in notes){
-        o = JSON.stringify(n + " : " + notes[n]);
-        para = document.createElement("P");
+
+    console.log("setting up");
+    var o, heading, t;
+    console.log(notenotes);
+    for (n in notenotes){
+        o = (notenotes[n].heading).toString();
+
+
+        heading = document.createElement("H3");
         t = document.createTextNode(o);
-        para.appendChild(t);
-        document.getElementById("notes").appendChild(para);
+        heading.appendChild(t);
+
+        text = document.createElement("P");
+        t = document.createTextNode(notenotes[n].toString());
+        text.appendChild(t);
+
+        div = document.createElement("DIV");
+        div.appendChild(heading);
+        div.appendChild(text);
+
+        document.getElementById("notes").appendChild(div);
     }
 }
 
-function clearData(a, b){
-    notes = {}
-    sessionStorage.setItem('note', {});
-    display();
-}
-function saveData(a, b){
-    notes[a] = b;
-    display();
-}
-function saveNotes(a, b){
-    dict = retrieveData();
-    console.log(dict);
-    dict.setItem(a.toString, b.toString());
-    sessionStorage.setItem('note', JSON.stringify(dict));
-    alert("data saved to local storage.");
-    console.log("data saved.");
-}
 
-// initalize note 
-var notes = {h : "w"};
 
 function startApp(){
     if (checkCompatibility()){
-        s = retrieveData();
-        console.log(typeof (s));
-
-        if (s != null){
-            // initalize notes variable with the value in storage.
-           notes = JSON.parse(s);
-        }
+        s = note.retrieveDataFromLocalStorage();
     }
     // display the value of notes
     display();

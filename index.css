@@ -1,5 +1,5 @@
 body {
-    
+
 }
 
 h1{
@@ -10,12 +10,35 @@ input#name {
 }
 
 input#description{
-    
+
     width:  500px;
     height: 250px;
+    overflow:scroll;
 }
-div#notes p{
+div#notes div {
     background-color: #ff00ff;
-    width:  100px;
-    height: 100px;
+    min-width:  100px;
+    max-width:  200px;
+    min-height: 100px;
+    max-height: 200px;
+    overflow: auto;
+    margin:5px;
 }
+
+div#notes p,h3 {
+    max-height:inherit;
+    max-width:inherit;
+}
+
+
+
+div#displayData,
+div#insertData {
+    display:inline-block;
+    vertical-align:top;
+    margin: 0 10px;
+    height: 750px;
+    overflow:scroll;
+}
+
+
