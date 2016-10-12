@@ -10,7 +10,7 @@ function checkCompatibility(){
     } else {
         // Sorry! No Web Storage support..
         console.log("You can't save");
-        document.getElementById("status").innerHTML = "Unable to save.";
+        document.getElementById("status").innerHTML = "Unable to save.\n\r You should consider exporting before you leave. ";
         return false;
     }
 }
@@ -23,12 +23,9 @@ function clearNotesElement(){
 }
 
 function editData(id, newHeading, newDescription){
-
-    console.log(notenotes[id]);
-
+    // edit the note
     notenotes[id].edit(newHeading, newDescription);
-    console.log(notenotes[id]);
-
+    // display the changes to the user
     display();
 
 }
