@@ -1,7 +1,7 @@
 # note-take
 
 To start up from the command line:
-do
+
 - git clone https://github.com/kazzacarrot/note-take.git 
 - cd onto note-take
 - firefox index.html or chromium-browser index.html ...
