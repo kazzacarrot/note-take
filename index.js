@@ -22,6 +22,16 @@ function clearNotesElement(){
     }
 }
 
+function editData(id, newHeading, newDescription){
+
+    console.log(notenotes[id]);
+
+    notenotes[id].edit(newHeading, newDescription);
+    console.log(notenotes[id]);
+
+    display();
+
+}
 
 function display(){
     console.log("clearing");

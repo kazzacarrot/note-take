@@ -11,9 +11,9 @@ input#name {
 
 input#description{
 
-    width:  500px;
+    width:  400px;
     height: 250px;
-    overflow:scroll;
+    overflow:auto;
 }
 div#notes div {
     background-color: #ff00ff;
@@ -28,6 +28,7 @@ div#notes div {
 div#notes p,h3 {
     max-height:inherit;
     max-width:inherit;
+    overflow:hide;
 }
 
 
@@ -37,8 +38,8 @@ div#insertData {
     display:inline-block;
     vertical-align:top;
     margin: 0 10px;
-    height: 750px;
-    overflow:scroll;
+    width: 500px;
+    overflow: auto;
 }
 
 

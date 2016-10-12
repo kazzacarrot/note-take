@@ -16,16 +16,17 @@
             <p>Name:</p>
             <input id="name" name="name" type="text"></input>
             <p>Description:</p>
-            <textarea cols=60 rows=20 id="description"  name="description" type="text"></textarea>
+            <textarea cols=60 rows=15 id="description"  name="description" type="text"></textarea>
             <p>and finally</p>
 
             <input type=submit value="Save" id="save" />
             <input type=submit value="Clear" id="clear" />
             <input type=submit value="Export" id="export"/>       
             <input type=submit value="Like, Save!" id="store"/>       
+            <input type=submit value="Edit" id="edit" disabled=true />       
         </div>
 
-        <div id="DisplayData">
+        <div id="displayData">
 
             <b>Status:</b> <p id="status"> </p>
             <input type=date name="date" id="date" value="2016-10-11" ></input>
@@ -48,6 +49,13 @@ window.onbeforeunload = function(e) {
         <script>
 document.getElementById("save").onclick = function() {
     saveData(document.getElementById('name'), document.getElementById('description'))
+}
+document.getElementById("edit").onclick = function() {
+    document.getElementById("edit").disabled = true;
+    var id = parseInt(this.className);
+    var newHeading = document.getElementById('name').value;
+    var newDescription = document.getElementById('description').value;
+    editData(id, newHeading, newDescription);
 }
 document.getElementById("store").onclick = function() {
     note.saveDataToLocalStorage();
@@ -80,6 +88,9 @@ document.getElementById("notes").onclick = function(e){
     document.getElementById('name').value = notenotes[id].heading;
 
     document.getElementById('description').innerHTML = notenotes[id].description;
+    document.getElementById('edit').disabled = false;
+    document.getElementById('edit').className = id;
+
 }
         </script>
     </body>
