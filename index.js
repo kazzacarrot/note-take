@@ -35,10 +35,12 @@ function display(){
 
 
         heading = document.createElement("H3");
+        heading.className="title";
         t = document.createTextNode(o);
         heading.appendChild(t);
 
         text = document.createElement("P");
+        text.className="context";
         t = document.createTextNode(notenotes[n].toString());
         text.appendChild(t);
 
@@ -46,6 +48,8 @@ function display(){
         div.appendChild(heading);
         div.appendChild(text);
 
+        div.id = n.toString();
+        div.className = "note"; 
         document.getElementById("notes").appendChild(div);
     }
 }
