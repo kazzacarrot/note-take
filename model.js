@@ -20,7 +20,7 @@ class note {
     removeNote(){
         delete this;
         var i = notenotes.indexOf(this);
-        notenotes.splice(index, 1);
+        notenotes.splice(i, 1);
     }
     static query(date, heading, content){
         for (n in notenotes){

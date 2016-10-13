@@ -25,13 +25,23 @@ div#notes div {
     margin:5px;
 }
 
+div#notes div.clicked {
+
+    background-color: #ffff00;
+}
+
 div#notes p,h3 {
     max-height:inherit;
     max-width:inherit;
     overflow:hide;
 }
 
+div#notes {
 
+    overflow: auto;
+    height:525px;
+
+}
 
 div#displayData,
 div#insertData {
@@ -39,7 +49,6 @@ div#insertData {
     vertical-align:top;
     margin: 0 10px;
     width: 500px;
-    overflow: auto;
 }
 
 

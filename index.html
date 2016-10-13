@@ -24,8 +24,9 @@
             <input type=submit value="Save" id="save" />
             <input type=submit value="Clear" id="clear" />
             <input type=submit value="Export" id="export"/>       
-            <input type=submit value="Like, Save!" id="store"/>       
+            <input type=submit value="Store!" id="store"/>       
             <input type=submit value="Edit" id="edit" disabled=true />       
+            <input type=submit value="Remove" id="remove" disabled=true />       
         </div>
 
         <div id="displayData">
@@ -53,15 +54,29 @@ window.onbeforeunload = function(e) {
 document.getElementById("save").onclick = function() {
     saveData(document.getElementById('name'), document.getElementById('description'))
 }
+document.getElementById("remove").onclick = function() {
+    var i = document.getElementById('edit').className;
+    var id = parseInt(i);
+    notenotes[id].removeNote();
+    document.getElementById('edit').disabled = true;
+    document.getElementById('remove').disabled = true;
+    display();
+}
+
+
 document.getElementById("edit").onclick = function() {
-    document.getElementById("edit").disabled = true;
     var id = parseInt(this.className);
     var newHeading = document.getElementById('name').value;
     var newDescription = document.getElementById('description').value;
     editData(id, newHeading, newDescription);
+    document.getElementById('edit').disabled = true;
+    document.getElementById('remove').disabled = true;
+    display();
 }
+
 document.getElementById("store").onclick = function() {
     note.saveDataToLocalStorage();
+    alert("Saved to local storage")
 }
 document.getElementById("clear").onclick =  function() {
     clearData();
@@ -73,19 +88,33 @@ document.getElementById("query").onclick = function() {
     queryData(document.getElementById('date'), document.getElementById('keyword'))
 
 }
+
+function unclickAllNotes(){
+    var notes = document.getElementById("notes").childNodes;
+    for (var i=0; i<notes.length; i++ ){
+        notes[i].className = "notes unClicked";
+    }
+    return true;
+}
+
 document.getElementById("notes").onclick = function(e){
     debugger;
     console.log(this);
     console.log(e);
     var t = e.target;
-    while (t.className !== "note" && t.className !== "body") {
+
+    while (t.className.indexOf("note") == -1 && t !== document.body) {
+        
         console.log(t);
         t = t.parentElement;
+        
     }
     if (t.className == "body"){
         alert("Please click on a note to edit it.");
 
     }
+    unclickAllNotes();
+    t.className = "clicked";
     var id = parseInt(t.id);
     console.log(notenotes[id]);
     document.getElementById('name').value = notenotes[id].heading;
@@ -93,7 +122,7 @@ document.getElementById("notes").onclick = function(e){
     document.getElementById('description').innerHTML = notenotes[id].description;
     document.getElementById('edit').disabled = false;
     document.getElementById('edit').className = id;
-
+    document.getElementById('remove').disabled = false;
 }
         </script>
     </body>
