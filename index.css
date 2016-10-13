@@ -26,9 +26,26 @@ div#notes div {
 }
 
 div#notes div.clicked {
-
     background-color: #ffff00;
 }
+
+div#notes div.very_likely {
+    background-color: #ff0000;
+}
+div#notes div.likely {
+    background-color: #ffff00;
+}
+div#notes div.quite_likely {
+    background-color: #ff00ff;
+}
+
+div#notes div.fairly_likely {
+    background-color: #f9f9f9;
+}
+div#notes div.not_likely {
+    background-color: #f2f2f2;
+}
+
 
 div#notes p,h3 {
     max-height:inherit;
