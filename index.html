@@ -35,8 +35,8 @@
 
             <input type=date name="date" id="date" value="2016-10-11" ></input>
             <input type=text name="keyword" id = "keyword"></input>
-            <input type=submit name="query" id="query"></input>
-            <input type=submit name="reset" id="reset"></input>
+            <input type=submit name="query" value="Query" id="query"></input>
+            <input type=submit name="reset" value="Reset" id="reset"></input>
             <div id="notes"> 
             </div>
 
@@ -102,7 +102,6 @@ function unclickAllNotes(){
 }
 
 document.getElementById("notes").onclick = function(e){
-    debugger;
     console.log(this);
     console.log(e);
     var t = e.target;
