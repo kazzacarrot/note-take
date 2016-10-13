@@ -29,21 +29,25 @@ div#notes div.clicked {
     background-color: #ffff00;
 }
 
+/*  likeliness of 4 */ 
 div#notes div.very_likely {
     background-color: #ff0000;
 }
+/*  likeliness of 3 */ 
 div#notes div.likely {
     background-color: #ffff00;
 }
-div#notes div.quite_likely {
-    background-color: #ff00ff;
-}
-
+/*  likeliness of 2 */ 
 div#notes div.fairly_likely {
+    background-color: #fbfbfb;
+}
+/*  likeliness of 1 */ 
+div#notes div.quite_likely {
     background-color: #f9f9f9;
 }
+/*  likeliness of 0 */ 
 div#notes div.not_likely {
-    background-color: #f2f2f2;
+    background-color: #929292;
 }
 
 

@@ -6,6 +6,7 @@ class note {
         this.heading      = heading;
         this.description  = description;
         this.lastModified = new Date();
+        this.score        = 0;  // For queries
     }
 
     edit(h, d){
@@ -23,30 +24,33 @@ class note {
         notenotes.splice(i, 1);
     }
     static query(date, heading, content){
-        var score = [];
         for (var n in notenotes){
             console.log(notenotes[n]);
             var note = notenotes[n];
-            score.push(0);
+            note.score = 0;
             if (note.heading.indexOf(heading) >= 0){
-                score[n] += 1;
+                note.score += 1;
             } 
 
             if (compareDates(note.lastModified, date)) {
                 console.log(note.lastModified);
                 console.log(date);
-                score[n] += 1;
+                note.score += 1;
             }
             if (note.description.indexOf(content) >= 0){
-                score[n] +=2;
+                note.score +=2;
             }
-            console.log(score[n]);
+            console.log(note.score);
         }
 
         notenotes.sort(function(a, b) {
-            return score[b] - score[a]
+
+            var dif = b.score - a.score;
+            console.log(a);
+            console.log(b);
+            console.log(dif);
+            return dif;    
         })
-        return score;
     }
     static retrieveDataFromLocalStorage(){
         var s = localStorage.getItem('note');

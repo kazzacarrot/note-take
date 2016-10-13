@@ -164,8 +164,8 @@ function queryData(date, keyword){
     date1 = new Date(date1);
     keyword1 = typeof keyword.value !== "undefined" ? keyword.value : "Note Content"; 
 
-    scores = note.query(date1, keyword1, keyword1);
-    colourInNotes(scores);
+    note.query(date1, keyword1, keyword1);
+    colourInNotes();
 }
 function saveData(a, b){
     c = typeof a.value !== "undefined" ? a.value : "Note Heading";
@@ -185,9 +185,10 @@ function clearData(){
     display();
 }
 
-function colourInNotes(scores){
-    scores.forEach(function(score, index){
-        var note = document.getElementById(index);
+function colourInNotes(){
+    notenotes.forEach(function(noteObj, index){
+        var score = noteObj.score;
+        var noteEle = document.getElementById(index);
 
         document.createElement("P");
         text = document.createElement("P");
@@ -195,8 +196,7 @@ function colourInNotes(scores){
         t = document.createTextNode("likelyness " + score);
         text.appendChild(t);
     
-        note.appendChild(text);
-        console.log(note);
+        noteEle.appendChild(text);
 
         if (score == 4 ){
             likelyhood = "very_likely"; 
@@ -213,8 +213,8 @@ function colourInNotes(scores){
         if (score == 0 ){
             likelyhood= "not_likely"; 
         }
-        note.className = "note "  + likelyhood;
-        console.log(note);
+        noteEle.className = "note "  + likelyhood;
+        console.log(noteEle);
     })
 }
 
