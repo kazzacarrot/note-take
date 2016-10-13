@@ -96,7 +96,7 @@ document.getElementById("query").onclick = function() {
 function unclickAllNotes(){
     var notes = document.getElementById("notes").childNodes;
     for (var i=0; i<notes.length; i++ ){
-        notes[i].className = "notes unClicked";
+        notes[i].className = "note unClicked";
     }
     return true;
 }
@@ -119,12 +119,13 @@ document.getElementById("notes").onclick = function(e){
     }
     else {
         unclickAllNotes();
-        t.className = t.className + " clicked";
+        t.className = "note clicked";
+
         var id = parseInt(t.id);
         console.log(notenotes[id]);
         document.getElementById('name').value = notenotes[id].heading;
 
-        document.getElementById('description').innerHTML = notenotes[id].description;
+        document.getElementById('description').value = notenotes[id].description;
         document.getElementById('edit').disabled = false;
         document.getElementById('edit').className = id;
         document.getElementById('remove').disabled = false;
