@@ -5,9 +5,6 @@
         <meta charset="UTF-8"/> 
         <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="index.css" />
-        <script src="index.js"></script>
-        <script src="controller.js"></script>
-        <script src="model.js"></script>
     </head>
     <body>
         <h1>Note Takeing App.</h1>
@@ -34,103 +31,17 @@
             <b>Status:</b> <p id="status"> </p>
 
             <input type=date name="date" id="date" value="2016-10-11" ></input>
-            <input type=text name="keyword" id = "keyword"></input>
+            <input type=text name="keyword" id = "keyword" value="Keyword"></input>
             <input type=submit name="query" value="Query" id="query"></input>
             <input type=submit name="reset" value="Reset" id="reset"></input>
             <div id="notes"> 
             </div>
 
         </div>
-        <script >
 
-startApp();
-console.log("started");
-
-window.onbeforeunload = function(e) {
-    note.saveDataToLocalStorage();
-}
-        </script>
-
-        <script>
-document.getElementById("save").onclick = function() {
-    saveData(document.getElementById('name'), document.getElementById('description'))
-}
-document.getElementById("reset").onclick = function() {
-    display();
-}
-document.getElementById("remove").onclick = function() {
-    var i = document.getElementById('edit').className;
-    var id = parseInt(i);
-    notenotes[id].removeNote();
-    document.getElementById('edit').disabled = true;
-    document.getElementById('remove').disabled = true;
-    display();
-}
-
-
-document.getElementById("edit").onclick = function() {
-    var id = parseInt(this.className);
-    var newHeading = document.getElementById('name').value;
-    var newDescription = document.getElementById('description').value;
-    editData(id, newHeading, newDescription);
-    document.getElementById('edit').disabled = true;
-    document.getElementById('remove').disabled = true;
-    display();
-}
-
-document.getElementById("store").onclick = function() {
-    note.saveDataToLocalStorage();
-    alert("Saved to local storage")
-}
-document.getElementById("clear").onclick =  function() {
-    clearData();
-}
-document.getElementById("export").onclick = function() {
-    exportData();
-}
-document.getElementById("query").onclick = function() {
-    queryData(document.getElementById('date'), document.getElementById('keyword'))
-
-}
-
-function unclickAllNotes(){
-    var notes = document.getElementById("notes").childNodes;
-    for (var i=0; i<notes.length; i++ ){
-        notes[i].className = "note unClicked";
-    }
-    return true;
-}
-
-document.getElementById("notes").onclick = function(e){
-    console.log(this);
-    console.log(e);
-    var t = e.target;
-
-    while (t.className.indexOf("note") == -1 && t !== document.body) {
-
-        console.log(t);
-        t = t.parentElement;
-
-    }
-    if (t == document.body){
-        alert("Please click on a note to edit it.");
-
-    }
-    else {
-        unclickAllNotes();
-        t.className = "note clicked";
-
-        var id = parseInt(t.id);
-        console.log(notenotes[id]);
-        document.getElementById('name').value = notenotes[id].heading;
-
-        document.getElementById('description').value = notenotes[id].description;
-        document.getElementById('edit').disabled = false;
-        document.getElementById('edit').className = id;
-        document.getElementById('remove').disabled = false;
-    }
-}
-        </script>
+        <script src="index.js"></script>
+        <script src="model.js"></script>
+        <script src="controller.js"></script>
     </body>
 
 </html>
